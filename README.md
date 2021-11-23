@@ -6,10 +6,14 @@
 
 ## Usage
 
-To use this image pull it:
+To use this image pull it from one of the following registries:
 
 ```bash
+# docker hub
 docker pull pascaliske/package
+
+# github container registry
+docker pull ghcr.io/pascaliske/package
 ```
 
 ## License
