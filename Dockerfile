@@ -6,9 +6,15 @@ LABEL maintainer="info@pascaliske.dev"
 ARG TARGETOS
 ARG TARGETARCH
 
+# build
+# RUN OS=${TARGETOS} ARCH=${TARGETARCH} build
+
 # final image
 FROM alpine:latest
 LABEL maintainer="info@pascaliske.dev"
+
+# environment
+# ENV key=value
 
 # volumes
 # VOLUME [  ]
