@@ -16,6 +16,7 @@ jobs:
         id: repository-name
         run: |
           echo "::set-output name=repository::${REPOSITORY//$OWNER\//}"
+          echo "::set-output name=image::${REPOSITORY//$OWNER\/docker-/}"
 
       # checkout
       - uses: actions/checkout@v3
@@ -23,11 +24,14 @@ jobs:
       # replace placeholder with repository name
       - name: Replace placeholder with repository name
         run: |
-          # replace placeholder: docker-package -> ${{ steps.repository-name.outputs.repository }}
+          # replace repository: docker-package -> ${{ steps.repository-name.outputs.repository }}
           sed -i 's|docker-package|${{ steps.repository-name.outputs.repository }}|g' README.md
           sed -i 's|docker-package|${{ steps.repository-name.outputs.repository }}|g' package.json
           sed -i 's|docker-package|${{ steps.repository-name.outputs.repository }}|g' mkdocs.yml
           mv {docker-package,${{ steps.repository-name.outputs.repository }}}.code-workspace
+
+          # replace image: package -> ${{ steps.repository-name.outputs.image }}
+          sed -i 's|package|${{ steps.repository-name.outputs.image }}|g' README.md
 
           # enable dependabot
           mv .github/dependabot.yml{.disabled,}
