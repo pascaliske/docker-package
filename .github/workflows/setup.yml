@@ -1,0 +1,46 @@
+name: Setup
+on: [push]
+
+permissions: write-all
+
+jobs:
+  setup:
+    name: Setup
+    runs-on: ubuntu-latest
+    env:
+      OWNER: ${{ github.repository_owner }}
+      REPOSITORY: ${{ github.repository }}
+    steps:
+      # build repository name
+      - name: Build repository name
+        id: repository-name
+        run: |
+          echo "::set-output name=repository::${REPOSITORY//$OWNER\//}"
+
+      # checkout
+      - uses: actions/checkout@v3
+
+      # replace placeholder with repository name
+      - name: Replace placeholder with repository name
+        run: |
+          # replace placeholder: docker-package -> ${{ steps.repository-name.outputs.repository }}
+          sed -i 's|docker-package|${{ steps.repository-name.outputs.repository }}|g' README.md
+          sed -i 's|docker-package|${{ steps.repository-name.outputs.repository }}|g' package.json
+          sed -i 's|docker-package|${{ steps.repository-name.outputs.repository }}|g' mkdocs.yml
+          mv {docker-package,${{ steps.repository-name.outputs.repository }}}.code-workspace
+
+          # enable dependabot
+          mv .github/dependabot.yml{.disabled,}
+
+          # remove setup workflow
+          rm .github/workflows/setup.yml
+
+      # commit changes
+      - uses: peter-evans/create-pull-request@v4
+        with:
+          branch: feature/initialize
+          title: 'chore: initialize repository'
+          commit-message: 'chore: initialize repository from template'
+          assignees: ${{ github.actor }}
+          delete-branch: true
+          signoff: true
