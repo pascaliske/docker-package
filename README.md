@@ -6,16 +6,16 @@
 
 ## Image
 
-| Registry   | Image                                                                                                                             |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| Docker Hub | [`pascaliske/package`](https://hub.docker.com/r/pascaliske/package)                                           |
-| GitHub     | [`ghcr.io/pascaliske/package`](https://github.com/pascaliske/docker-package/pkgs/container/package) |
+| Registry                  | Image                                                                                               |
+| ------------------------- | --------------------------------------------------------------------------------------------------- |
+| GitHub Container Registry | [`ghcr.io/pascaliske/package`](https://github.com/pascaliske/docker-package/pkgs/container/package) |
+| Docker Hub                | [`pascaliske/package`](https://hub.docker.com/r/pascaliske/package)                                 |
 
 The following platforms are available for this image:
 
 ```bash
-$ docker run --rm mplatform/mquery pascaliske/package:latest
-Image: pascaliske/package:latest
+$ docker run --rm mplatform/mquery ghcr.io/pascaliske/package:latest
+Image: ghcr.io/pascaliske/package:latest
  * Manifest List: Yes
  * Supported platforms:
    - linux/amd64
@@ -28,11 +28,11 @@ Image: pascaliske/package:latest
 To use this image pull it from one of the following registries:
 
 ```bash
-# docker hub
-docker pull pascaliske/package
-
 # github container registry
 docker pull ghcr.io/pascaliske/package
+
+# docker hub
+docker pull pascaliske/package
 ```
 
 ## License
