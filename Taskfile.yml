@@ -1,0 +1,13 @@
+version: '3'
+
+includes:
+  setup: ./.github/setup.yml
+
+tasks:
+  setup:
+    summary: Setup repository from template - Replaces repository name and image name in the entire code base.
+    cmds:
+      - task: setup:replace-repository-name
+      - task: setup:replace-image-name
+      - task: setup:enable-dependabot
+      - task: setup:remove-setup-workflow
