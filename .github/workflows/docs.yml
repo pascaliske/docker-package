@@ -13,6 +13,9 @@ jobs:
       # checkout
       - uses: actions/checkout@v3
 
+      # setup taskfile
+      - uses: arduino/setup-task@v1
+
       # create pages for docs
       - name: Create pages for docs
         run: task docs
