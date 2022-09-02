@@ -3,10 +3,10 @@ version: '3'
 tasks:
   default:
     cmds:
-      - task: prepare-pages
+      - task: default-pages
 
-  # prepare documentation pages
-  prepare-pages:
+  # prepare default documentation pages
+  default-pages:
     cmds:
       - cat README.md >> docs/index.md
       - echo "---" > docs/LICENSE.md
