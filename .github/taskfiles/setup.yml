@@ -1,6 +1,13 @@
 version: '3'
 
 tasks:
+  default:
+    cmds:
+      - task: replace-repository-name
+      - task: replace-image-name
+      - task: enable-dependabot
+      - task: remove-setup-workflow
+
   # replace repository name references
   replace-repository-name:
     cmds:
