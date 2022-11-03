@@ -5,7 +5,6 @@ tasks:
     cmds:
       - task: replace-repository-name
       - task: replace-image-name
-      - task: enable-dependabot
       - task: remove-setup-workflow
 
   # replace repository name references
@@ -18,11 +17,6 @@ tasks:
   replace-image-name:
     cmds:
       - sed -i 's|package|{{.IMAGE_NAME}}|g' README.md
-
-  # enable dependabot
-  enable-dependabot:
-    cmds:
-      - mv .github/dependabot.yml{.disabled,}
 
   # remove setup workflow
   remove-setup-workflow:
