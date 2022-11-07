@@ -21,7 +21,7 @@ jobs:
       - name: Build image name
         id: image-name
         run: |
-          echo "::set-output name=image::${REPOSITORY//docker-/}"
+          echo "image=${REPOSITORY//docker-/}" >> $GITHUB_OUTPUT
 
       # checkout
       - uses: actions/checkout@v3

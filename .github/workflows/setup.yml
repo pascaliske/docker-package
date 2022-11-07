@@ -12,8 +12,8 @@ jobs:
       - name: Build names
         id: names
         run: |
-          echo "::set-output name=repository::${REPOSITORY//$OWNER\//}"
-          echo "::set-output name=image::${REPOSITORY//$OWNER\/docker-/}"
+          echo "repository=${REPOSITORY//$OWNER\//}" >> $GITHUB_OUTPUT
+          echo "image=${REPOSITORY//$OWNER\/docker-/}" >> $GITHUB_OUTPUT
         env:
           OWNER: ${{ github.repository_owner }}
           REPOSITORY: ${{ github.repository }}
