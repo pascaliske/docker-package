@@ -32,7 +32,7 @@ jobs:
           IMAGE_NAME: ${{ steps.names.outputs.image }}
 
       # commit changes
-      - uses: peter-evans/create-pull-request@v4
+      - uses: peter-evans/create-pull-request@v5
         with:
           branch: feature/initialize
           title: 'chore: initialize repository'
