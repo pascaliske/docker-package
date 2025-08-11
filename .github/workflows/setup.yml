@@ -19,7 +19,7 @@ jobs:
           REPOSITORY: ${{ github.repository }}
 
       # checkout
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # setup taskfile
       - uses: arduino/setup-task@v1
